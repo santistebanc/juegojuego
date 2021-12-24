@@ -7001,12 +7001,13 @@ var gun = GUN(["https://juegojuego.herokuapp.com/gun"]);
 var gun_default = gun;
 
 // docs/dist/Register.js
-function Register() {
+function Register({teamName, setTeamName}) {
   const [name, setName] = useState("");
   return /* @__PURE__ */ react.createElement("form", {
     onSubmit: (e) => {
       e.preventDefault();
-      window.location.href = window.location.href + "/" + name;
+      window.location.hash = name;
+      setTeamName(name);
     }
   }, /* @__PURE__ */ react.createElement("div", {
     className: "Register"
@@ -7023,44 +7024,48 @@ function Register() {
 var Register_default = Register;
 
 // docs/dist/Ready.js
-function Ready({room, name, players}) {
+function Ready({teamName, players}) {
   console.log("players: ", players);
   return /* @__PURE__ */ react.createElement("div", {
     className: "Ready"
-  }, /* @__PURE__ */ react.createElement("h1", null, name), /* @__PURE__ */ react.createElement("button", {
+  }, /* @__PURE__ */ react.createElement("h1", null, teamName), /* @__PURE__ */ react.createElement("button", {
     onClick: () => {
-      const points = gun_default.get(room).get("players").get(name).get("points");
+      const points = gun_default.get("players").get(teamName).get("points");
       points.once((current) => points.put((current ?? 0) + 10));
     }
-  }), /* @__PURE__ */ react.createElement("table", null, /* @__PURE__ */ react.createElement("tr", null, /* @__PURE__ */ react.createElement("th", null, "Jugador"), /* @__PURE__ */ react.createElement("th", null, "Puntos")), players.map((player) => /* @__PURE__ */ react.createElement("tr", {
+  }, "STOP"), /* @__PURE__ */ react.createElement("table", null, /* @__PURE__ */ react.createElement("thead", null, /* @__PURE__ */ react.createElement("tr", null, /* @__PURE__ */ react.createElement("th", null, "Jugador"), /* @__PURE__ */ react.createElement("th", null, "Puntos"))), /* @__PURE__ */ react.createElement("tbody", null, players.map((player) => /* @__PURE__ */ react.createElement("tr", {
     key: player.name
-  }, /* @__PURE__ */ react.createElement("td", null, player.name), /* @__PURE__ */ react.createElement("td", null, player.points)))));
+  }, /* @__PURE__ */ react.createElement("td", null, player.name), /* @__PURE__ */ react.createElement("td", null, player.points))))));
 }
 var Ready_default = Ready;
 
 // docs/dist/App.js
-var roomName = window.location.pathname.split("/")[1];
-var teamName = window.location.pathname.split("/")[2];
-console.log("room: ", roomName);
-console.log("team: ", teamName);
-var gunroom = gun_default.get(roomName);
-var gunteam = gunroom.get("players").get(teamName).put({name: teamName});
 function App() {
+  const [teamName, setTeamName] = useState("");
   const [players, setPlayers] = useState({});
   useEffect(() => {
-    gunroom.get("players").map().on((player) => {
+    setTeamName(window.location.hash.slice(1));
+    window.onhashchange = () => {
+      setTeamName(window.location.hash.slice(1));
+    };
+    gun_default.get("players").map().on((player) => {
       console.log("...player", player);
       setPlayers((players2) => ({...players2, [player.name]: player}));
     });
   }, []);
+  useEffect(() => {
+    gun_default.get("players").get(teamName).put({name: teamName});
+  }, [teamName]);
   if (teamName) {
     return /* @__PURE__ */ react.createElement(Ready_default, {
-      room: roomName,
-      name: teamName,
+      teamName,
       players: Object.values(players)
     });
   } else {
-    return /* @__PURE__ */ react.createElement(Register_default, null);
+    return /* @__PURE__ */ react.createElement(Register_default, {
+      teamName,
+      setTeamName
+    });
   }
 }
 var App_default = App;

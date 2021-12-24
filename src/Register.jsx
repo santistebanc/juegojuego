@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./Register.css";
 import gun from "./gun";
 
-function Register() {
+function Register({ teamName, setTeamName }) {
   const [name, setName] = useState("");
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        window.location.href = window.location.href + "/" + name;
+        window.location.hash = name;
+        setTeamName(name);
       }}
     >
       <div className="Register">

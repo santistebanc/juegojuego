@@ -4,19 +4,16 @@ import React, { useState, useEffect } from "react";
 import Register from "./Register";
 import Ready from "./Ready";
 
-const roomName = window.location.pathname.split("/")[1];
-const teamName = window.location.pathname.split("/")[2];
-console.log("room: ", roomName);
-console.log("team: ", teamName);
-
-const gunroom = gun.get(roomName);
-const gunteam = gunroom.get("players").get(teamName).put({ name: teamName });
-
 function App() {
+  const [teamName, setTeamName] = useState("");
   const [players, setPlayers] = useState({});
 
   useEffect(() => {
-    gunroom
+    setTeamName(window.location.hash.slice(1));
+    window.onhashchange = () => {
+      setTeamName(window.location.hash.slice(1));
+    };
+    gun
       .get("players")
       .map()
       .on((player) => {
@@ -25,12 +22,14 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    gun.get("players").get(teamName).put({ name: teamName });
+  }, [teamName]);
+
   if (teamName) {
-    return (
-      <Ready room={roomName} name={teamName} players={Object.values(players)} />
-    );
+    return <Ready teamName={teamName} players={Object.values(players)} />;
   } else {
-    return <Register />;
+    return <Register teamName={teamName} setTeamName={setTeamName} />;
   }
 }
 

@@ -27,12 +27,15 @@ th {
 
 .Ready button {
   width: 80vmin;
-  height: 20vmin;
+  height: 40vmin;
   margin-bottom: 20px;
   border-radius: 16px;
   background-color: darkred;
   border: 4px solid rgb(77, 3, 3);
   cursor: pointer;
+  font-size: calc(20px + 8vmin);
+  font-weight: 800;
+  color: white;
 }
 
 .Ready button:hover {
