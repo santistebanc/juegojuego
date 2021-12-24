@@ -1,0 +1,83 @@
+/* docs/dist/App.css */
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/* docs/dist/Ready.css */
+.Ready {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 4vmin);
+  color: white;
+}
+.Ready table {
+  text-align: left;
+  border-collapse: collapse;
+}
+.Ready td,
+th {
+  border: 1px solid #777;
+  padding: 8px;
+}
+.Ready th {
+  color: #aaa;
+}
+.Ready button {
+  width: 80vmin;
+  height: 20vmin;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  background-color: darkred;
+  border: 4px solid rgb(77, 3, 3);
+  cursor: pointer;
+}
+.Ready button:hover {
+  background-color: rgb(112, 0, 0);
+}
+
+/* docs/dist/Register.css */
+.Register {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 4vmin);
+  color: white;
+}
+.Register input[type=text] {
+  color: white;
+  background-color: #333333;
+  border: 4px solid #777;
+  border-radius: 8px;
+  font-size: larger;
+  padding: 12px;
+}
+.Register input[type=submit] {
+  margin: 1rem;
+  color: #aaa;
+  background-color: rgb(30, 30, 49);
+  border: 4px solid rgb(17, 17, 41);
+  border-radius: 8px;
+  font-size: larger;
+  padding: 12px;
+  cursor: pointer;
+}
+.Register input[type=submit]:hover {
+  background-color: rgb(23, 23, 44);
+}
