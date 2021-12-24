@@ -1,4 +1,9 @@
 /* Add CSS styles here! */
 body {
   font-family: sans-serif;
+  margin: 0;
+}
+textarea:focus,
+input:focus {
+  outline: none;
 }
