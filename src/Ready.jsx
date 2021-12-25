@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Ready.css";
 import gun from "./gun";
+import { Howl } from "howler";
+
+const sound = new Howl({
+  src: ["Pausa.mp3"],
+});
 
 function Ready({ teamName, player, players, first }) {
   if (!players[teamName]) return <h1>Loading...</h1>;
@@ -23,6 +28,7 @@ function Ready({ teamName, player, players, first }) {
         <button
           onClick={() => {
             gun.get("game").put({ first: teamName, playing: false });
+            sound.play();
           }}
         >
           STOP

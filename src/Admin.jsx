@@ -3,7 +3,7 @@ import "./Admin.css";
 import gun from "./gun";
 import questions from "./questions.json";
 
-function Admin({ players, question }) {
+function Admin({ players, question, setCorrect, setWrong }) {
   const [inputQuestion, setInputQuestion] = useState(question);
 
   console.log("players: ", players);
@@ -88,6 +88,7 @@ function Admin({ players, question }) {
                 <button
                   className="correct"
                   onClick={() => {
+                    setCorrect(true);
                     gun
                       .get("players")
                       .get(player.name)
@@ -101,8 +102,9 @@ function Admin({ players, question }) {
               </td>
               <td>
                 <button
-                  className="correct"
+                  className="wrong"
                   onClick={() => {
+                    setWrong(true);
                     gun
                       .get("players")
                       .get(player.name)

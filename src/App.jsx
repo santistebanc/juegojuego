@@ -11,6 +11,8 @@ function App() {
   const [players, setPlayers] = useState({});
   const [question, setQuestion] = useState(0);
   const [first, setFirst] = useState();
+  const [showCorrect, setCorrect] = useState(false);
+  const [showWrong, setWrong] = useState(false);
 
   useEffect(() => {
     gun
@@ -64,9 +66,28 @@ function App() {
   }, [teamName]);
 
   if (teamName === "admin") {
-    return <Admin question={question} players={players} first={first} />;
+    return (
+      <Admin
+        showCorrect={showCorrect}
+        setCorrect={setCorrect}
+        showWrong={showWrong}
+        setWrong={setWrong}
+        question={question}
+        players={players}
+        first={first}
+      />
+    );
   } else if (teamName === "board") {
-    return <Board question={question} players={players} />;
+    return (
+      <Board
+        showCorrect={showCorrect}
+        setCorrect={setCorrect}
+        showWrong={showWrong}
+        setWrong={setWrong}
+        question={question}
+        players={players}
+      />
+    );
   } else if (teamName) {
     return <Ready teamName={teamName} players={players} first={first} />;
   } else {

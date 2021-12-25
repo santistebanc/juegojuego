@@ -3,7 +3,36 @@ import "./Board.css";
 import gun from "./gun";
 import Question from "./Question";
 
-function Board({ players, question }) {
+const soundCorrect = new Howl({
+  src: ["Correcto.mp3"],
+});
+
+const soundWrong = new Howl({
+  src: ["Wrong.mp3"],
+});
+
+function Board({
+  players,
+  question,
+  showCorrect,
+  setCorrect,
+  showWrong,
+  setWrong,
+}) {
+  useEffect(() => {
+    if (showCorrect) {
+      soundCorrect.play();
+      setCorrect(false);
+    }
+  }, [showCorrect]);
+
+  useEffect(() => {
+    if (showWrong) {
+      soundWrong.play();
+      setWrong(false);
+    }
+  }, [showWrong]);
+
   if (question > 0) {
     return <Question question={question} players={players} />;
   }
