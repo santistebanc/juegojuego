@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Admin.css";
 import gun from "./gun";
-import questions from "./questions.json";
+import questions from "./questions";
 
 function Admin({ players, question, setCorrect, setWrong }) {
   const [inputQuestion, setInputQuestion] = useState(question);
