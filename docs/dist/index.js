@@ -9012,7 +9012,6 @@ function Ready({teamName, player, players: players2, first}) {
 var Ready_default = Ready;
 
 // docs/dist/Admin.js
-import questions from "./questions.json";
 function Admin({players: players2, question, setCorrect, setWrong}) {
   const [inputQuestion, setInputQuestion] = useState(question);
   console.log("players: ", players2);
@@ -15534,11 +15533,11 @@ var __pika_web_default_export_for_treeshaking__ = /* @__PURE__ */ getDefaultExpo
 var react_player_default = __pika_web_default_export_for_treeshaking__;
 
 // docs/dist/Question.js
-import questions2 from "./questions.json";
+import questions from "./questions.json";
 function Question({players: players2, question}) {
   const [playing, setPlaying] = useState(false);
   const ref = useRef(null);
-  const {title, src} = questions2[question];
+  const {title, src} = questions[question];
   useEffect(() => {
     gun_default.get("game").get("playing").on((isPlaying) => {
       setPlaying(isPlaying);
