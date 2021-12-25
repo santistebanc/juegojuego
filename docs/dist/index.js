@@ -13587,7 +13587,7 @@ function Question({players: players2, question}) {
     className: "Question"
   }, /* @__PURE__ */ react.createElement("h1", null, title), /* @__PURE__ */ react.createElement(react_player_default, {
     ref,
-    url: src,
+    url: "https://drive.google.com/uc?export=view&id=" + src,
     volume: 0,
     playing
   }));

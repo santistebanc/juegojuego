@@ -30,7 +30,12 @@ function Question({ players, question }) {
   return (
     <div className="Question">
       <h1>{title}</h1>
-      <ReactPlayer ref={ref} url={src} volume={0} playing={playing} />
+      <ReactPlayer
+        ref={ref}
+        url={"https://drive.google.com/uc?export=view&id=" + src}
+        volume={0}
+        playing={playing}
+      />
     </div>
   );
 }
