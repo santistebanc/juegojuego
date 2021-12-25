@@ -11,6 +11,62 @@
   color: white;
 }
 
+/* docs/dist/Admin.css */
+.Admin {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: white;
+}
+.Admin table {
+  text-align: left;
+  border-collapse: collapse;
+}
+.Admin td,
+th {
+  border: 1px solid #777;
+  padding: 8px;
+}
+.Admin th {
+  color: #aaa;
+}
+.points {
+  background-color: transparent;
+  border: none;
+  color: white;
+  width: 60px;
+}
+
+/* docs/dist/Board.css */
+.Board {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: white;
+}
+.Board table {
+  text-align: left;
+  border-collapse: collapse;
+}
+.Board td,
+th {
+  border: 1px solid #777;
+  padding: 8px;
+}
+.Board th {
+  color: #aaa;
+}
+
 /* docs/dist/Ready.css */
 .Ready {
   text-align: center;
@@ -83,4 +139,22 @@ th {
 }
 .Register input[type=submit]:hover {
   background-color: rgb(23, 23, 44);
+}
+
+/* docs/dist/Question.css */
+.Question {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: white;
+}
+video {
+  min-width: 100%;
+  width: 100%;
+  height: auto;
 }
