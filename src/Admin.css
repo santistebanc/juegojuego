@@ -1,0 +1,71 @@
+.Admin {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: white;
+}
+
+.Admin table {
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.Admin td,
+th {
+  border: 1px solid #777;
+  padding: 8px;
+}
+
+.Admin th {
+  color: #aaa;
+}
+
+/* .start {
+  width: 80vmin;
+  padding: 8px;
+  margin-bottom: 20px;
+  background-color: rgb(0, 90, 12);
+  border: 4px solid rgb(3, 77, 22);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+.start:hover {
+  background-color: rgb(0, 70, 6);
+}
+
+.reset {
+  width: 80vmin;
+  padding: 8px;
+  margin-bottom: 20px;
+  background-color: rgb(90, 0, 0);
+  border: 4px solid rgb(77, 3, 3);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+.reset:hover {
+  background-color: rgb(70, 0, 0);
+}
+
+.remove {
+  background-color: transparent;
+  font-weight: 800;
+  color: white;
+  border: none;
+  cursor: pointer;
+} */
+
+.points {
+  background-color: transparent;
+  border: none;
+  color: white;
+  width: 60px;
+}

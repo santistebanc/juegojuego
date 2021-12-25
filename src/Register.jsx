@@ -10,7 +10,6 @@ function Register({ teamName, setTeamName }) {
       onSubmit={(e) => {
         e.preventDefault();
         window.location.hash = name;
-        setTeamName(name);
       }}
     >
       <div className="Register">

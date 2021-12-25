@@ -2,35 +2,33 @@ import React, { useState, useEffect } from "react";
 import "./Ready.css";
 import gun from "./gun";
 
-function Ready({ teamName, players }) {
-  console.log("players: ", players);
+function Ready({ teamName, player, players, first }) {
+  if (!players[teamName]) return <h1>Loading...</h1>;
+
+  const { points } = players[teamName];
+
+  const isFirst = first === teamName;
+
   return (
-    <div className="Ready">
-      <h1>{teamName}</h1>
-      <button
-        onClick={() => {
-          const points = gun.get("players").get(teamName).get("points");
-          points.once((current) => points.put((current ?? 0) + 10));
-        }}
-      >
-        STOP
-      </button>
-      <table>
-        <thead>
-          <tr>
-            <th>Jugador</th>
-            <th>Puntos</th>
-          </tr>
-        </thead>
-        <tbody>
-          {players.map((player) => (
-            <tr key={player.name}>
-              <td>{player.name}</td>
-              <td>{player.points}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div
+      className="Ready"
+      style={{
+        backgroundColor: first ? (isFirst ? "green" : "red") : "#282c34",
+      }}
+    >
+      <h3>{teamName}</h3>
+      {first ? (
+        <h1>{isFirst ? "Tú respondes" : first + " responde"}</h1>
+      ) : (
+        <button
+          onClick={() => {
+            gun.get("game").put({ first: teamName, playing: false });
+          }}
+        >
+          STOP
+        </button>
+      )}
+      <h2>{points}</h2>
     </div>
   );
 }
