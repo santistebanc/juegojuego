@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactPlayer from "react-player";
 import "./Question.css";
 import gun from "./gun";
-import questions from "./questions.json";
+import questions from "./questions";
 
 function Question({ players, question }) {
   const [playing, setPlaying] = useState(false);
